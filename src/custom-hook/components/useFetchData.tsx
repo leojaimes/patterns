@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 
-const apiBaseUrl = 'https://api.github.com';
-
-const url = `${apiBaseUrl}/orgs/Developero-oficial/repos?sort=created`;
-
 interface Repository {
   name: string;
   html_url: string;
 }
 
-export const useFetchData = () => {
+interface Props {
+  url: string;
+}
+export const useFetchData = ({ url }: Props) => {
   const [data, setData] = useState<Repository[] | null>(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -34,7 +33,7 @@ export const useFetchData = () => {
     };
 
     doFetch();
-  }, []);
+  }, [url]);
 
   return {
     data,

@@ -1,7 +1,10 @@
 import { useFetchData } from './useFetchData';
 
-export function CustomHookFetchData() {
-  const { data, error, isFetching } = useFetchData();
+interface Props {
+  url: string;
+}
+export function CustomHookFetchData({ url }: Props) {
+  const { data, error, isFetching } = useFetchData({ url });
   if (isFetching) {
     return <p>Loading...</p>;
   }
