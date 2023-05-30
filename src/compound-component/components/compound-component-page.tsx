@@ -1,3 +1,4 @@
+import { FinalTodo } from './final-todo';
 import { Todo } from './normal-todo';
 
 export function CompoundComponentPage() {
@@ -10,6 +11,17 @@ export function CompoundComponentPage() {
         <hr />
 
         <h2>Ejemplo con Compound Component</h2>
+        {/* <FinalTodo>
+          <TodoTitle>Compound Pattern</TodoTitle>
+          <TodoForm />
+          <TodoList />
+        </FinalTodo> */}
+
+        <FinalTodo>
+          <FinalTodo.TodoTitle>Compound Pattern</FinalTodo.TodoTitle>
+          <FinalTodo.TodoForm />
+          <FinalTodo.TodoList />
+        </FinalTodo>
       </>
     </>
   );
