@@ -70,16 +70,18 @@ function TodoList({
 }
 
 export function Todo({ title }: { title: string }) {
-  const [listTodos, setListTodos] = useState({});
+  const [listTodos, setListTodos] = useState<{ [key: string]: TodoProps }>({});
 
-  const handleSubmit = (inputValue: any) => {
+  const handleSubmit = (inputValue: string) => {
     setListTodos({
       ...listTodos,
       [inputValue]: { name: inputValue, isDone: false },
     });
   };
 
-  const toogleTodo = ({ target: { name } }) => {
+  const toogleTodo = ({
+    target: { name },
+  }: React.ChangeEvent<HTMLInputElement>) => {
     setListTodos({
       ...listTodos,
       [name]: {
