@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ErrorBoundary } from './error-boundary';
+import { FinalErrorBoundary } from './final-error-boundary';
 
 function MyBug() {
   const [isError, setIsError] = useState(false);
@@ -23,6 +24,20 @@ export function RenderPropsPage() {
       <ErrorBoundary>
         <MyBug />
       </ErrorBoundary>
+      <hr />
+      <FinalErrorBoundary
+        render={(error) => (
+          <p>
+            Oh no desde render props Ups D: <code>{error?.message}</code>
+          </p>
+        )}
+      >
+        <MyBug />
+      </FinalErrorBoundary>
+
+      <FinalErrorBoundary>
+        <MyBug />
+      </FinalErrorBoundary>
     </>
   );
 }
